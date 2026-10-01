@@ -1,8 +1,21 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, BaseLLM, Crew, Process, Task
 
 
-class DeterministicLLM:
-    def call(self, messages, **kwargs):
+class DeterministicLLM(BaseLLM):
+    def __init__(self):
+        super().__init__(
+            model="sulcus-deterministic",
+            temperature=0.0,
+        )
+
+    def call(
+        self,
+        messages,
+        tools=None,
+        callbacks=None,
+        available_functions=None,
+        **kwargs,
+    ):
         return "CrewAI staging result: completed"
 
 
